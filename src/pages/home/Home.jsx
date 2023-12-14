@@ -1,13 +1,16 @@
 import React from 'react'
 
+
 import "./style.scss";
 import HeroBanner from './heroBanner/HeroBanner';
-HeroBanner
+import Trending from "./trending/Trending";
+//import Popular from "./popular/Popular";
 
-const Home = () => {
+function Home() {
   return (
     <div className="homePage">
-      <HeroBanner/>
+      <HeroBanner />
+      <Trending/>
     </div>
   );
 }

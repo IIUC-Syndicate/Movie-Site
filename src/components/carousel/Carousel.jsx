@@ -21,15 +21,12 @@ const Carousel = ({ data, loading, endpoint, title }) => {
     const navigate = useNavigate();
 
     const navigation = (dir) => {
-        //direction
         const container = carouselContainer.current;
 
         const scrollAmount =
             dir === "left"
                 ? container.scrollLeft - (container.offsetWidth + 20)
                 : container.scrollLeft + (container.offsetWidth + 20);
-                //right left arrow diya shift korar jnno
-
 
         container.scrollTo({
             left: scrollAmount,
@@ -61,7 +58,6 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                     className="carouselRighttNav arrow"
                     onClick={() => navigation("right")}
                 />
-                
                 {!loading ? (
                     <div className="carouselItems" ref={carouselContainer}>
                         {data?.map((item) => {
@@ -82,7 +78,14 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                                 >
                                     <div className="posterBlock">
                                         <Img src={posterUrl} />
-                                       
+                                        <CircleRating
+                                            rating={item.vote_average.toFixed(
+                                                1
+                                            )}
+                                        />
+                                        <Genres
+                                            data={item.genre_ids.slice(0, 2)}
+                                        />
                                     </div>
                                     <div className="textBlock">
                                         <span className="title">
